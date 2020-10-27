@@ -33,6 +33,8 @@ export function deepCopy<T>(value: T): T {
  *
  * Note that the target can be a function, in which case the properties in
  * the source Object are copied onto it as static properties of the Function.
+ *
+ * Note: we don't merge __proto__ to prevent prototype pollution
  */
 export function deepExtend(target: any, source: any): any {
   if (!(source instanceof Object)) {
@@ -63,7 +65,7 @@ export function deepExtend(target: any, source: any): any {
   }
 
   for (let prop in source) {
-    if (!source.hasOwnProperty(prop)) {
+    if (!source.hasOwnProperty(prop) || !isValidKey(prop)) {
       continue;
     }
     target[prop] = deepExtend(target[prop], source[prop]);
@@ -75,4 +77,9 @@ export function deepExtend(target: any, source: any): any {
 // TODO: Really needed (for JSCompiler type checking)?
 export function patchProperty(obj: any, prop: string, value: any) {
   obj[prop] = value;
+}
+
+function isValidKey(key: string): boolean {
+  return key !== '__proto__';
+
 }
