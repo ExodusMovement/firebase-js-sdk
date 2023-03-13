@@ -65,7 +65,7 @@ export function deepExtend(target: any, source: any): any {
   }
 
   for (let prop in source) {
-    if (!source.hasOwnProperty(prop) || !isValidKey(prop)) {
+    if (!Object.prototype.hasOwnProperty.call(source, prop) || !isValidKey(prop)) {
       continue;
     }
     target[prop] = deepExtend(target[prop], source[prop]);

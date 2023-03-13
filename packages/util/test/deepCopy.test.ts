@@ -111,4 +111,8 @@ describe('deepExtend', () => {
     expect(a.__proto__).to.equal(Object.prototype);
     expect(a.polluted).to.be.undefined;
   });
+
+  it('hasOwnProperty', () => {
+    expect(deepCopy({ hasOwnProperty: 123 })).to.deep.equal({ hasOwnProperty: 123 });
+  });
 });
