@@ -1,6 +1,6 @@
 {
-  "name": "@firebase/util",
-  "version": "0.2.17",
+  "name": "@exodus/firebase-util",
+  "version": "0.2.17-exodus.0",
   "description": "",
   "author": "Firebase <firebase-support@google.com> (https://firebase.google.com/)",
   "main": "dist/index.node.cjs.js",
@@ -8,7 +8,8 @@
   "module": "dist/index.esm.js",
   "esm2017": "dist/index.esm2017.js",
   "files": [
-    "dist"
+    "dist",
+    "!**/*.map"
   ],
   "scripts": {
     "build": "rollup -c",
@@ -48,10 +49,10 @@
   "repository": {
     "directory": "packages/util",
     "type": "git",
-    "url": "https://github.com/firebase/firebase-js-sdk.git"
+    "url": "https://github.com/ExodusMovement/firebase-js-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/firebase/firebase-js-sdk/issues"
+    "url": "https://github.com/ExodusMovement/firebase-js-sdk/issues"
   },
   "typings": "dist/index.d.ts",
   "nyc": {
