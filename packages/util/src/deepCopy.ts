@@ -68,7 +68,12 @@ export function deepExtend(target: any, source: any): any {
     if (!Object.prototype.hasOwnProperty.call(source, prop) || !isValidKey(prop)) {
       continue;
     }
-    target[prop] = deepExtend(target[prop], source[prop]);
+    Object.defineProperty(target, prop, {
+      value: deepExtend(target[prop], source[prop]),
+      configurable: true,
+      writable: true,
+      enumerable: true
+    });
   }
 
   return target;
