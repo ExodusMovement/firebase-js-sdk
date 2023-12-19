@@ -203,11 +203,6 @@ fireauth.iframeclient.IframeWrapper.prototype.unregisterEvent =
 };
 
 
-/** @private @const {!goog.string.Const} The GApi loader URL. */
-fireauth.iframeclient.IframeWrapper.GAPI_LOADER_SRC_ = goog.string.Const.from(
-    'https://apis.google.com/js/api.js?onload=%{onload}');
-
-
 /**
  * @private @const {!fireauth.util.Delay} The gapi.load network error timeout
  *     delay with units in ms.
@@ -295,9 +290,8 @@ fireauth.iframeclient.IframeWrapper.loadGApiJs_ = function() {
         }
       };
       // Build GApi loader.
-      var url = goog.html.TrustedResourceUrl.format(
-          fireauth.iframeclient.IframeWrapper.GAPI_LOADER_SRC_,
-          {'onload': cbName});
+      throw new Error('removed gapi src codepath')
+      var url
       // Load GApi loader.
       var result = goog.Promise.resolve(goog.net.jsloader.safeLoad(url));
       result.thenCatch(function(error) {
