@@ -113,6 +113,8 @@ describe('deepExtend', () => {
   });
 
   it('hasOwnProperty', () => {
-    expect(deepCopy({ hasOwnProperty: 123 })).to.deep.equal({ hasOwnProperty: 123 });
+    expect(deepCopy({ hasOwnProperty: 123 })).to.deep.equal({
+      hasOwnProperty: 123
+    });
   });
 });

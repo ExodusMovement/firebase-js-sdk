@@ -65,7 +65,10 @@ export function deepExtend(target: any, source: any): any {
   }
 
   for (let prop in source) {
-    if (!Object.prototype.hasOwnProperty.call(source, prop) || !isValidKey(prop)) {
+    if (
+      !Object.prototype.hasOwnProperty.call(source, prop) ||
+      !isValidKey(prop)
+    ) {
       continue;
     }
     Object.defineProperty(target, prop, {
@@ -86,5 +89,4 @@ export function patchProperty(obj: any, prop: string, value: any) {
 
 function isValidKey(key: string): boolean {
   return key !== '__proto__';
-
 }
