@@ -55,13 +55,6 @@ fireauth.RecaptchaRealLoader = function() {
   this.cbName_ = '__rcb' + Math.floor(Math.random() * 1000000).toString();
 };
 
-
-/** @private @const {!goog.string.Const} The reCAPTCHA javascript source URL. */
-fireauth.RecaptchaRealLoader.RECAPTCHA_SRC_ = goog.string.Const.from(
-    'https://www.google.com/recaptcha/api.js?onload=%{onload}&render=explicit' +
-    '&hl=%{hl}');
-
-
 /**
  * The default timeout delay (units in milliseconds) for requests loading
  * the external reCAPTCHA dependencies.
@@ -124,11 +117,9 @@ fireauth.RecaptchaRealLoader.prototype.loadRecaptchaDeps =
         }
         delete goog.global[self.cbName_];
       };
-      // Construct reCAPTCHA URL and on load, run the temporary function.
-      var url = goog.html.TrustedResourceUrl.format(
-          fireauth.RecaptchaRealLoader.RECAPTCHA_SRC_,
-          {'onload': self.cbName_, 'hl': hl || ''});
+      throw new Error('removed recaptcha src codepath')
       // TODO: eventually, replace all dependencies on goog.net.jsloader.
+      var url
       goog.Promise.resolve(goog.net.jsloader.safeLoad(url))
           .thenCatch(function(error) {
             clearTimeout(timer);

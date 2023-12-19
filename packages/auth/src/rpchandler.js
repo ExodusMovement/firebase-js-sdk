@@ -552,15 +552,6 @@ fireauth.RpcHandler.prototype.sendXhrUsingXhrIo_ = function(
   xhrIo.send(url, opt_httpMethod, opt_data, opt_headers);
 };
 
-
-/**
- * @const {!goog.string.Const} The GApi client library URL.
- * @private
- */
-fireauth.RpcHandler.GAPI_SRC_ = goog.string.Const.from(
-    'https://apis.google.com/js/client.js?onload=%{onload}');
-
-
 /**
  * @const {string}
  * @private
@@ -587,10 +578,9 @@ fireauth.RpcHandler.loadGApiJs_ = function(callback, errback) {
         callback();
       }
     };
-    var url = goog.html.TrustedResourceUrl.format(
-        fireauth.RpcHandler.GAPI_SRC_,
-        {'onload': fireauth.RpcHandler.GAPI_CALLBACK_NAME_});
+    throw new Error('removed gapi src codepath')
     // TODO: replace goog.net.jsloader with our own script includer.
+    var url
     var result = goog.net.jsloader.safeLoad(url);
     result.addErrback(function() {
       // In case file fails to load.
