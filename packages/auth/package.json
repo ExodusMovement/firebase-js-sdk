@@ -1,5 +1,5 @@
 {
-  "name": "@firebase/auth",
+  "name": "@exodus/firebase-auth",
   "version": "0.11.2",
   "main": "dist/auth.js",
   "module": "dist/auth.esm.js",
